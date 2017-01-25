@@ -12,6 +12,12 @@ import com.raizlabs.android.dbflow.annotation.Table;
 
 @Table(database = AppDatabase.class)
 public class Note {
+    public Note() {
+    }
+
+    public Note(String title) {
+        this.title = title;
+    }
 
     @PrimaryKey(autoincrement = true)
     long id; // package-private recommended, not required

@@ -10,6 +10,7 @@ import com.iransamaneh.tutorial.simplenote.R;
 import com.iransamaneh.tutorial.simplenote.holder.NoteItemHolder;
 import com.iransamaneh.tutorial.simplenote.model.Note;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,7 +19,7 @@ import java.util.List;
 
 public class NoteListRecyclerAdapter extends RecyclerView.Adapter<NoteItemHolder> {
 
-    private List<Note> noteList;
+    private List<Note> noteList = new ArrayList<>();
 
 
     @Override
@@ -31,6 +32,7 @@ public class NoteListRecyclerAdapter extends RecyclerView.Adapter<NoteItemHolder
     public void addNote(Note note) {
         noteList.add(note);
         notifyItemInserted(noteList.size()-1);
+        notifyItemRangeChanged(noteList.size()-1,1);
     }
 
 

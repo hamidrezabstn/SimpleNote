@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 
+import com.iransamaneh.tutorial.simplenote.adapter.NoteListRecyclerAdapter;
+
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mList;
@@ -18,17 +20,21 @@ public class MainActivity extends AppCompatActivity {
         mList = (RecyclerView) findViewById(R.id.note_list);
         mBtn = (Button) findViewById(R.id.note_addbtn);
 
-        mList.setLayoutManager(new LinearLayoutManager(this , LinearLayoutManager.VERTICAL,false));
-        getListFromDB();
 
+
+        mList.setLayoutManager(new LinearLayoutManager(this , LinearLayoutManager.VERTICAL,false));
+        //getListFromDB();
+        mList.setAdapter(new NoteListRecyclerAdapter());
+
+        mBtn.setOnClickListener(new OnAddClicked((NoteListRecyclerAdapter)mList.getAdapter()));
 
     }
 
-    private void addItem(){
+    /*private void addItem(){
 
     }
 
     private void getListFromDB() {
 
-    }
+    }*/
 }
