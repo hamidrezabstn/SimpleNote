@@ -1,6 +1,10 @@
 package com.iransamaneh.tutorial.simplenote.model;
 
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+
+import com.iransamaneh.tutorial.simplenote.BR;
 import com.iransamaneh.tutorial.simplenote.database.AppDatabase;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
@@ -11,12 +15,14 @@ import com.raizlabs.android.dbflow.annotation.Table;
  */
 
 @Table(database = AppDatabase.class)
-public class Note {
+public class Note extends BaseObservable {
     public Note() {
     }
 
     public Note(String title) {
+
         this.title = title;
+        notifyPropertyChanged(BR.title);
     }
 
     @PrimaryKey(autoincrement = true)
@@ -29,8 +35,13 @@ public class Note {
         return id;
     }
 
+    @Bindable
     public String getTitle() {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+        notifyPropertyChanged(BR.title);
+    }
 }

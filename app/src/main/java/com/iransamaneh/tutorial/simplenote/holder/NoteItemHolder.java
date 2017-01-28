@@ -33,6 +33,6 @@ public class NoteItemHolder extends RecyclerView.ViewHolder implements View.OnCl
     }
 
     public void createView(Note note) {
-        mBinder.noteListItemTitle.setText(note.getTitle());
+        mBinder.setNote(note);
     }
 }

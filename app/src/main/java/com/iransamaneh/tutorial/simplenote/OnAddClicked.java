@@ -7,6 +7,9 @@ import android.view.View;
 import com.iransamaneh.tutorial.simplenote.adapter.NoteListRecyclerAdapter;
 import com.iransamaneh.tutorial.simplenote.model.Note;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * Created by iransamaneh on 1/25/17.
  */
@@ -23,7 +26,7 @@ public class OnAddClicked implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        mAdapter.addNote(new Note("salam"));
+        mAdapter.addNote(new Note(String.valueOf(Calendar.getInstance().getTimeInMillis())));
         /*AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext()).setView(R.layout.layout_note_list_add);
         builder.setTitle("متن خود را وارد کنید");
         builder.setPositiveButton("ثبت", new DialogInterface.OnClickListener() {
