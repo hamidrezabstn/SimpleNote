@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+<RelativeLayout
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,17 +14,18 @@
 
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/note.list"
+        android:id="@+id/note_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
-        android:id="@+id/note.addbtn"
+        android:id="@+id/note_addbtn"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:background="@drawable/addbtn"
-        android:layout_below="@id/note.list"/>
+        android:layout_below="@id/note_list"/>
 
 </RelativeLayout>
+</layout>

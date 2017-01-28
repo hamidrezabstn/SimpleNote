@@ -1,5 +1,6 @@
 package com.iransamaneh.tutorial.simplenote.adapter;
 
+import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.iransamaneh.tutorial.simplenote.OnNoteClicked;
 import com.iransamaneh.tutorial.simplenote.R;
+import com.iransamaneh.tutorial.simplenote.databinding.LayoutNoteListItemBinding;
 import com.iransamaneh.tutorial.simplenote.holder.NoteItemHolder;
 import com.iransamaneh.tutorial.simplenote.model.Note;
 
@@ -24,9 +26,10 @@ public class NoteListRecyclerAdapter extends RecyclerView.Adapter<NoteItemHolder
 
     @Override
     public NoteItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_note_list_item,parent,false);
+        LayoutNoteListItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext())
+                ,R.layout.layout_note_list_item,parent,false);
 
-        return new NoteItemHolder(v,new OnNoteClicked(this));
+        return new NoteItemHolder(binding,new OnNoteClicked(this));
     }
 
     public void addNote(Note note) {

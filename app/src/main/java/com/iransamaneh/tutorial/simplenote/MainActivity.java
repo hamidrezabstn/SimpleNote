@@ -1,5 +1,6 @@
 package com.iransamaneh.tutorial.simplenote;
 
+import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,34 +8,23 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 
 import com.iransamaneh.tutorial.simplenote.adapter.NoteListRecyclerAdapter;
+import com.iransamaneh.tutorial.simplenote.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView mList;
-    private Button mBtn;
+    private ActivityMainBinding mBinder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
+        mBinder = DataBindingUtil.setContentView(this , R.layout.activity_main);
 
-        mList = (RecyclerView) findViewById(R.id.note_list);
-        mBtn = (Button) findViewById(R.id.note_addbtn);
-
-
-
-        mList.setLayoutManager(new LinearLayoutManager(this , LinearLayoutManager.VERTICAL,false));
+        mBinder.noteList.setLayoutManager(new LinearLayoutManager(this , LinearLayoutManager.VERTICAL,false));
         //getListFromDB();
-        mList.setAdapter(new NoteListRecyclerAdapter());
+        mBinder.noteList.setAdapter(new NoteListRecyclerAdapter());
 
-        mBtn.setOnClickListener(new OnAddClicked((NoteListRecyclerAdapter)mList.getAdapter()));
-
-    }
-
-    /*private void addItem(){
+        mBinder.noteAddbtn.setOnClickListener(new OnAddClicked(
+                (NoteListRecyclerAdapter)mBinder.noteList.getAdapter()));
 
     }
-
-    private void getListFromDB() {
-
-    }*/
 }

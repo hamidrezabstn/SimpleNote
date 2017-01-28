@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.iransamaneh.tutorial.simplenote.R;
 import com.iransamaneh.tutorial.simplenote.adapter.OnNoteListener;
+import com.iransamaneh.tutorial.simplenote.databinding.LayoutNoteListItemBinding;
 import com.iransamaneh.tutorial.simplenote.model.Note;
 
 
@@ -15,16 +16,14 @@ import com.iransamaneh.tutorial.simplenote.model.Note;
 
 public class NoteItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    TextView mTitle;
+    LayoutNoteListItemBinding mBinder;
     OnNoteListener mListener;
 
 
-    public NoteItemHolder(View itemView , OnNoteListener listener) {
-        super(itemView);
-        mListener = listener;
-        mTitle = (TextView) itemView.findViewById(R.id.note_list_item_title);
-
-        mTitle.setOnClickListener(this);
+    public NoteItemHolder(LayoutNoteListItemBinding itemView , OnNoteListener listener) {
+        super(itemView.getRoot());
+        mBinder = itemView;
+        mBinder.noteListItemTitle.setOnClickListener(this);
 
     }
 
@@ -34,6 +33,6 @@ public class NoteItemHolder extends RecyclerView.ViewHolder implements View.OnCl
     }
 
     public void createView(Note note) {
-        mTitle.setText(note.getTitle());
+        mBinder.noteListItemTitle.setText(note.getTitle());
     }
 }
