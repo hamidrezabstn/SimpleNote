@@ -7,6 +7,7 @@ import android.view.View;
 import com.iransamaneh.tutorial.simplenote.adapter.NoteListRecyclerAdapter;
 import com.iransamaneh.tutorial.simplenote.model.Note;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -20,22 +21,14 @@ public class OnAddClicked implements View.OnClickListener {
         if (adapter != null) {
             mAdapter = adapter;
         }else{
-            mAdapter = new NoteListRecyclerAdapter();
+            mAdapter = new NoteListRecyclerAdapter(new ArrayList<Note>());
         }
     }
 
     @Override
     public void onClick(View v) {
-        mAdapter.addNote(new Note(String.valueOf(Calendar.getInstance().getTimeInMillis())));
-        /*AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext()).setView(R.layout.layout_note_list_add);
-        builder.setTitle("متن خود را وارد کنید");
-        builder.setPositiveButton("ثبت", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        //mAdapter.addNote(new Note(String.valueOf(Calendar.getInstance().getTimeInMillis())));
+        mAdapter.getNoteVM().addNote(new Note(String.valueOf(Calendar.getInstance().getTimeInMillis())));
 
-                mAdapter.addNote(new Note("salam"));
-            }
-        });
-        builder.create().show();*/
     }
 }

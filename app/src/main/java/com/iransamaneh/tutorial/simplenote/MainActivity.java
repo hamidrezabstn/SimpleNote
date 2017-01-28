@@ -9,6 +9,9 @@ import android.widget.Button;
 
 import com.iransamaneh.tutorial.simplenote.adapter.NoteListRecyclerAdapter;
 import com.iransamaneh.tutorial.simplenote.databinding.ActivityMainBinding;
+import com.iransamaneh.tutorial.simplenote.model.Note;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         mBinder.noteList.setLayoutManager(new LinearLayoutManager(this , LinearLayoutManager.VERTICAL,false));
         //getListFromDB();
-        mBinder.noteList.setAdapter(new NoteListRecyclerAdapter());
+        mBinder.noteList.setAdapter(new NoteListRecyclerAdapter(new ArrayList<Note>()));
 
         mBinder.noteAddbtn.setOnClickListener(new OnAddClicked(
                 (NoteListRecyclerAdapter)mBinder.noteList.getAdapter()));
